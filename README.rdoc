@@ -1,0 +1,5 @@
+== LinkedIn search app
+
+Web application which will allow the user to search for a person on linkedIn 
+and return and display the results. The web application is also capeable of 
+keeping track of the names searched.
