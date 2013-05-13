@@ -31,7 +31,7 @@ class SearchesController < ApplicationController
     access_token = OAuth::AccessToken.new(consumer, user_token, user_secret)
     
     # Pick some fields
-    fields = ['first-name', 'last-name', 'headline', 'industry', 'num-connections']
+    fields = ['first-name', 'last-name', 'headline', 'industry', 'num-connections'].join(',')
     
     # Make a request for JSON data
     json_txt = access_token.get("/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
