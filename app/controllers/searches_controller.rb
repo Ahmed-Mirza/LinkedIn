@@ -18,10 +18,7 @@ class SearchesController < ApplicationController
     user_secret="8931810e-91b7-40de-b093-de336e42b706"
     
     # Specify LinkedIn API endpoint
-    configuration = { :site => 'https://api.linkedin.com',
-                          :authorize_path => '/uas/oauth/authenticate',
-                          :request_token_path => '/uas/oauth/requestToken',
-                          :access_token_path => '/uas/oauth/accessToken' }
+    configuration = { :site => 'https://api.linkedin.com' }
     
     # Use your API key and secret to instantiate consumer object
     consumer = OAuth::Consumer.new(api_key, api_secret, configuration)
