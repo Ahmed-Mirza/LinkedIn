@@ -26,7 +26,7 @@ class SearchesController < ApplicationController
     access_token = OAuth::AccessToken.new(consumer, user_token, user_secret)
     
     # Make call to LinkedIn to retrieve your own profile
-    response = access_token.get("http://api.linkedin.com/v1/people/~?format=json")
+    @response = access_token.get("http://api.linkedin.com/v1/people/~?format=json")
     
   end
   
