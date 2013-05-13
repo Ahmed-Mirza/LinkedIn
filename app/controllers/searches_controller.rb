@@ -18,16 +18,23 @@ class SearchesController < ApplicationController
     user_secret="8931810e-91b7-40de-b093-de336e42b706"
     
     # Specify LinkedIn API endpoint
-    configuration = { :site => 'https://api.linkedin.com' }
+    consumer_options = { :site => "https://api.linkedin.com",
+                     :authorize_path => "/uas/oauth/requestToken",
+                     :request_token_path => "/uas/oauth/accessToken",
+                     :access_token_path => "/uas/oauth/authorize" }
     
     # Use your API key and secret to instantiate consumer object
-    consumer = OAuth::Consumer.new(api_key, api_secret, configuration)
+    consumer = OAuth::Consumer.new(api_key, api_secret, consumer_options)
     
     # Use your developer token and secret to instantiate access token object
     access_token = OAuth::AccessToken.new(consumer, user_token, user_secret)
     
-    # Make call to LinkedIn to retrieve your own profile
-    @response = access_token.get("http://api.linkedin.com/v1/people/~?format=json")
+    # Pick some fields
+    fields = ['first-name', 'last-name', 'headline', 'industry', 'num-connections'].join(',')
+    
+    # Make a request for JSON data
+    json_txt = access_token.get("/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
+    @profile = JSON.parse(json_txt)
     
   end
   
