@@ -10,6 +10,24 @@ class SearchesController < ApplicationController
   
   def new # displys a form to create a search
     @search = Search.new
+    
+    api_key = "64t3dlhlblzr"
+    api_secret="7053jy75E5PexgYt"
+    user_token="d9708047-42b0-4177-b76c-f961e350de75"
+    user_secret="8931810e-91b7-40de-b093-de336e42b706"
+    
+    # Specify LinkedIn API endpoint
+    configuration = { :site => 'https://api.linkedin.com' }
+    
+    # Use your API key and secret to instantiate consumer object
+    consumer = OAuth::Consumer.new(api_key, api_secret, configuration)
+    
+    # Use your developer token and secret to instantiate access token object
+    access_token = OAuth::AccessToken.new(consumer, user_token, user_secret)
+    
+    # Make call to LinkedIn to retrieve your own profile
+    response = access_token.get("http://api.linkedin.com/v1/people/~?format=json")
+    
   end
   
   def create # saves a search into the database
