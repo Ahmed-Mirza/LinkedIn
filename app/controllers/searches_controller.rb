@@ -34,8 +34,8 @@ class SearchesController < ApplicationController
     fields = ['first-name', 'last-name', 'headline', 'industry', 'num-connections'].join(',')
     
     # Make a request for JSON data
-    json_txt = access_token.get("/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
-    @profile = JSON.parse(json_txt)
+    @json_txt = access_token.get("/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
+    @profile = JSON.parse(@json_txt)
     
   end
   
