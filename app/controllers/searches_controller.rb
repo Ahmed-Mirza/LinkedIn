@@ -10,6 +10,7 @@ class SearchesController < ApplicationController
   
   def new # displys a form to create a search
     require 'oauth'
+    require 'json'
     @search = Search.new
     
     api_key = "64t3dlhlblzr"
