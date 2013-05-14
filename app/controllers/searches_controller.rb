@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
 # note that all instance variable will be acessable files( or maybe more likely there own coresponding views) withing the view folders
-  def index# default home page
+  def search_history# default home page
     @searches = Search.all # @ searches is an instance variable which retreives ans contains all of the searhes which have been saved to the database
   end
   
@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
     @search = Search.find(params[:id])# @ search is an instance variable which will contain specific search which will be selected by the user
   end
   
-  def new # displys a form to create a search
+  def search_page # displys a form to create a search
     require 'oauth'
     require 'json'
     @search = Search.new
@@ -44,7 +44,7 @@ class SearchesController < ApplicationController
     @search = Search.new(params[:search])
     
     if @search.save
-      redirect_to index_path, :notice => "Your Search has been Saved"
+      redirect_to root_path, :notice => "Your Search has been Saved"
     else
       render "new"
     end
@@ -65,7 +65,7 @@ class SearchesController < ApplicationController
   def destroy # deleates a searh from the database
     @search = Search.find(params[:id])
     @search.destroy
-    redirect_to searches_path,:notice => "Your Search has been Deleted"
+    redirect_to root_path,:notice => "Your Search has been Deleted"
   end
   
 end

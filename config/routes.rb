@@ -1,12 +1,11 @@
 SearchFinal::Application.routes.draw do
   resources :searches
   
-  root to: 'searches#new'
+  root to: 'searches#search_page'
 
-  match '/index', to: 'searches#index'
+  match '/history', to: 'searches#search_history'
   
   match '/show', to: 'searches#show'
-  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
