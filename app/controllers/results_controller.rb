@@ -24,7 +24,7 @@ class ResultsController < ApplicationController
     fields = ['first-name', 'last-name', 'headline', 'industry', 'num-connections'].join(',')
     
     # Make a request for JSON data
-    @json_txt = access_token.get("/v1/people-search:(#{fields})?first-name=Ahmed", 'x-li-format' => 'json').body
+    @json_txt = access_token.get("/v1/people-search?first-name=Ahmed", 'x-li-format' => 'json').body
     @profile = JSON.parse(@json_txt)
 
   end
