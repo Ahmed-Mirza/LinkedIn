@@ -8,10 +8,9 @@ class SearchesController < ApplicationController
     @search = Search.find(params[:id])# @ search is an instance variable which will contain specific search which will be selected by the user
   end
   
-  def search_page # displys a form to create a search
+  def results
     require 'oauth'
-    require 'json'
-    @search = Search.new
+    require 'json' 
     
     api_key = "64t3dlhlblzr"
     api_secret="7OS3jy75E5PexgYt"
@@ -36,17 +35,24 @@ class SearchesController < ApplicationController
     # Make a request for JSON data
     @json_txt = access_token.get("/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
     @profile = JSON.parse(@json_txt)
+  end
+  
+  def search_page # displys a form to create a search
+    
+    @search = Search.new
     
   end
   
   def create # saves a search into the database
     
+    
+    
     @search = Search.new(params[:search])
     
     if @search.save
-      redirect_to root_path, :notice => "Your Search has been Saved"
+      redirect_to results_path, :notice => "Your Search has been Saved"
     else
-      render "new"
+      render "search_page"
     end
   end
   #***********************************************
@@ -65,7 +71,7 @@ class SearchesController < ApplicationController
   def destroy # deleates a searh from the database
     @search = Search.find(params[:id])
     @search.destroy
-    redirect_to root_path,:notice => "Your Search has been Deleted"
+    redirect_to history_path,:notice => "Your Search has been Deleted"
   end
   
 end
