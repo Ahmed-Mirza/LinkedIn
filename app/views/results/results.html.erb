@@ -5,8 +5,8 @@
 <h3>This is where the Search Results will be Posted</h3>
 <%$i=0 %>
 <%$num= @profile["people"]["_count"].to_i%></h2>%>
-<% %>
+<%while $i< $num do %>
 
-	<h2><%= @profile["people"]["values"][0]["lastName"]%></h2>
+	<h2><%= @profile["people"]["values"][$i]["lastName"]%></h2>
 
 <%end%>
