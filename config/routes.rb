@@ -1,5 +1,6 @@
 SearchFinal::Application.routes.draw do
   resources :searches
+  resources :results
   
   root to: 'searches#search_page'
 
@@ -7,6 +8,7 @@ SearchFinal::Application.routes.draw do
   
   match '/show', to: 'searches#show'
   match '/results', to: 'results#results'
+  match '/goto_reults_create', to: 'results#create' 
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

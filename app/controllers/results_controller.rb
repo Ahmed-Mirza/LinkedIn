@@ -1,7 +1,7 @@
 class ResultsController < ApplicationController
   
   def results
-    require 'oauth'
+      require 'oauth'
     require 'json'
     api_key = "64t3dlhlblzr"
     api_secret="7OS3jy75E5PexgYt"
@@ -24,8 +24,14 @@ class ResultsController < ApplicationController
     fields = ['first-name', 'last-name', 'headline', 'industry', 'num-connections'].join(',')
     
     # Make a request for JSON data
-    @json_txt = access_token.get("/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
+    @json_txt = access_token.get("/v1/people-search/~:(#{fields})", 'x-li-format' => 'json').body
     @profile = JSON.parse(@json_txt)
+
+  end
+  
+  def create
+    
+
   end
   
 end
