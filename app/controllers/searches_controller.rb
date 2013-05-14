@@ -13,10 +13,15 @@ class SearchesController < ApplicationController
   end
   
   def search_page # displys a form to create a search
-    require 'oauth'
-    require 'json'
+   
     @search = Search.new
     
+    
+  end
+  
+  def create # saves a search into the database
+    require 'oauth'
+    require 'json'
     api_key = "64t3dlhlblzr"
     api_secret="7OS3jy75E5PexgYt"
     user_token="58f485ba-348e-4aa5-9b0c-23c301e86675"
@@ -41,14 +46,10 @@ class SearchesController < ApplicationController
     @json_txt = access_token.get("/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
     @profile = JSON.parse(@json_txt)
     
-  end
-  
-  def create # saves a search into the database
-    
     @search = Search.new(params[:search])
     
     if @search.save
-      redirect_to root_path, :notice => "Your Search has been Saved"
+      redirect_to results_path, :notice => "Your Search has been Saved"
     else
       render "search_page"
     end
