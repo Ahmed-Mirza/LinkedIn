@@ -48,7 +48,7 @@ class SearchesController < ApplicationController
     @search = Search.new(params[:search])
     
     if @search.save
-      redirect_to results_path, :notice => "Your Search has been Saved"
+      redirect_to root_path, :notice => "Your Search has been Saved"
     else
       render "search_page"
     end
