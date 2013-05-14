@@ -9,17 +9,6 @@ class SearchesController < ApplicationController
   end
   
   def results
-    
-  end
-  
-  def search_page # displys a form to create a search
-   
-    @search = Search.new
-    
-    
-  end
-  
-  def create # saves a search into the database
     require 'oauth'
     require 'json'
     api_key = "64t3dlhlblzr"
@@ -45,6 +34,17 @@ class SearchesController < ApplicationController
     # Make a request for JSON data
     @json_txt = access_token.get("/v1/people/~:(#{fields})", 'x-li-format' => 'json').body
     @profile = JSON.parse(@json_txt)
+  end
+  
+  def search_page # displys a form to create a search
+   
+    @search = Search.new
+    
+    
+  end
+  
+  def create # saves a search into the database
+    
     
     @search = Search.new(params[:search])
     
