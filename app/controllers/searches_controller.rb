@@ -15,8 +15,8 @@ class SearchesController < ApplicationController
     
     api_key = "64t3dlhlblzr"
     api_secret="7OS3jy75E5PexgYt"
-    user_token="52e76aba-c641-43a8-b93d-8af30c1cd9b8"
-    user_secret="5e48a76d-99da-40f9-bd56-25a452a94881"
+    user_token="bdc42f7c-d45f-49e3-a64f-b5da8c880faa"
+    user_secret="f07bd302-8375-4103-acc2-cfbf5eba80e3"
     
     # Specify LinkedIn API endpoint
     consumer_options = { :site => "https://api.linkedin.com",
