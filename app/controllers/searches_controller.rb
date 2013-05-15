@@ -30,7 +30,7 @@ class SearchesController < ApplicationController
   end
   
   def results
-      require 'oauth'
+    require 'oauth'
     require 'json'
     api_key = "64t3dlhlblzr"
     api_secret="7OS3jy75E5PexgYt"
