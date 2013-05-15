@@ -7,8 +7,7 @@ SearchFinal::Application.routes.draw do
   match '/history', to: 'searches#search_history'
   
   match '/show', to: 'searches#show'
-  match '/results_display', to: 'results#results'
-  match '/goto_reults_create', to: 'results#create' 
+  match '/results_display', to: 'searches#results'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

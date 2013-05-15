@@ -3,6 +3,16 @@
 <hr/>
 
 <h3>This is where the Search Results will be Posted</h3>
+<%$i=0 %>
+<%$num= @profile["people"]["_count"].to_i%>
 
-	<h2><%= @profile["firstName"]%></h2>
+<%= @profile["people"]["values"]%>
 
+<%while $i< $num do %>
+	<%first = @profile["people"]["values"][$i]["firstName"]%>
+	<%last = @profile["people"]["values"][$i]["lastName"]%>
+	<%= @profile["people"]["values"][$i]["id"]%>
+	<% $i +=1 %>
+	<h2><%="#{first} #{last}"%></h2>
+	<hr/>
+<%end%>
