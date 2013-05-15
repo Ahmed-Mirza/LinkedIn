@@ -22,7 +22,7 @@ class SearchesController < ApplicationController
   def create # saves a search into the database
     
     @search = Search.new(params[:search])
-    $currentSearch="mian"
+    $currentSearch=:search
     if @search.save
       redirect_to results_display_path, :notice => "Your Search has been Saved"
     else
