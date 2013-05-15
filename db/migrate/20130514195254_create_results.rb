@@ -1,7 +1,9 @@
 class CreateResults < ActiveRecord::Migration
   def change
     create_table :results do |t|
-      t.text :content
+      t.string :id
+      t.string :firstName
+      t.string :lastName
 
       t.timestamps
     end
