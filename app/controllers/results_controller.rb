@@ -20,9 +20,9 @@ class ResultsController < ApplicationController
     # Use your developer token and secret to instantiate access token object
     access_token = OAuth::AccessToken.new(consumer, user_token, user_secret)
    
-    loco =$currentSearch
+    loco ="mirza"
     # Make a request for JSON data
-    @json_txt = access_token.get("/v1/people-search?keywords=mirza", 'x-li-format' => 'json').body
+    @json_txt = access_token.get("/v1/people-search?keywords=#{loco}", 'x-li-format' => 'json').body
     @profile = JSON.parse(@json_txt)
 
     $i=0 
