@@ -22,7 +22,7 @@ class ResultsController < ApplicationController
    
     loco =$currentSearch
     # Make a request for JSON data
-    @json_txt = access_token.get("/v1/people-search?keywords=#{loco}", 'x-li-format' => 'json').body
+    @json_txt = access_token.get("/v1/people-search?keywords=mirza", 'x-li-format' => 'json').body
     @profile = JSON.parse(@json_txt)
 
     $i=0 
