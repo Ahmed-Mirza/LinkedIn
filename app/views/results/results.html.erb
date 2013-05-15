@@ -9,8 +9,10 @@
 <%= @profile["people"]["values"]%>
 
 <%while $i< $num do %>
-	<h2><%= @profile["people"]["values"][$i]["firstName"]%></h2>
-	<h2><%= @profile["people"]["values"][$i]["lastName"]%></h2>
+	<%first = @profile["people"]["values"][$i]["firstName"]%>
+	<%last = @profile["people"]["values"][$i]["lastName"]%>
+	<%last = @profile["people"]["values"][$i]["id"]%>
 	<% $i +=1 %>
+	<h2><%=first last%></h2>
 	<hr/>
 <%end%>
