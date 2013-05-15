@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
 # note that all instance variable will be acessable files( or maybe more likely there own coresponding views) withing the view folders
+
   def search_history# default home page
     @searches = Search.all # @ searches is an instance variable which retreives ans contains all of the searhes which have been saved to the database
   end
@@ -21,7 +22,7 @@ class SearchesController < ApplicationController
   def create # saves a search into the database
     
     @search = Search.new(params[:search])
-    
+    put @search
     if @search.save
       redirect_to results_display_path, :notice => "Your Search has been Saved"
     else
@@ -53,7 +54,7 @@ class SearchesController < ApplicationController
     fields = ['first-name', 'last-name', 'headline', 'industry', 'num-connections'].join(',')
     
     # Make a request for JSON data
-    @json_txt = access_token.get("/v1/people-search?keywords=Ahmed", 'x-li-format' => 'json').body
+    @json_txt = access_token.get("/v1/people-search?keywords=#{}", 'x-li-format' => 'json').body
     @profile = JSON.parse(@json_txt)
 
   end
