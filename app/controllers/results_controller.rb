@@ -34,10 +34,10 @@ class ResultsController < ApplicationController
       last = @profile["people"]["values"][$i]["lastName"]
       iD=@profile["people"]["values"][$i]["id"]
       $i +=1 
-      @results = Result.new(id:@profile["people"]["values"][$i]["id"],firstName:@profile["people"]["values"][$i]["firstName"],lastName:@profile["people"]["values"][$i]["lastName"])
-      @results.save
+      @result = Result.new(id:@profile["people"]["values"][$i]["id"],firstName:@profile["people"]["values"][$i]["firstName"],lastName:@profile["people"]["values"][$i]["lastName"])
+      @result.save
     end
-  @result=Result.all
+  @results=Result.all
   end
   
   def create
