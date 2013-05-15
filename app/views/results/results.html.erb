@@ -17,11 +17,3 @@
 	<hr/>
 <%end%>
 
-<% @result.each do |result| %> <!-- stuff between the begining and ending marks is embeded ruby code this also created a block (think java methods) The @search.each do |search| is basically a loop which allow us go throuh every search which has been retrived from the database by the instance variable @searches-->
-	
-	<hr /><!--Html code which creates a lin divider-->
-	
-	<h6><%="#{result.firstName} #{result.lastName} #{result.id}" %></h6> <!-- the = at the begining indicates that the output of any embeded ruby executed within will be outputed to the webpage.-->
-	
-
-<% end %>
