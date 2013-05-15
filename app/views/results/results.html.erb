@@ -11,7 +11,7 @@
 <%while $i< $num do %>
 	<%first = @profile["people"]["values"][$i]["firstName"]%>
 	<%last = @profile["people"]["values"][$i]["lastName"]%>
-	<%last = @profile["people"]["values"][$i]["id"]%>
+	<%= @profile["people"]["values"][$i]["id"]%>
 	<% $i +=1 %>
 	<h2><%="#{first} #{last}"%></h2>
 	<hr/>
