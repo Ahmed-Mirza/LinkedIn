@@ -6,6 +6,7 @@ class SearchesController < ApplicationController
   end
   
   def show # shows an individual post which has been saved to the database 
+    
     @search = Search.find(params[:id])# @ search is an instance variable which will contain specific search which will be selected by the user
   end
   
@@ -22,11 +23,17 @@ class SearchesController < ApplicationController
   def create # saves a search into the database
     
     @search = Search.new(params[:search])
+    
     $currentSearch=@search
+    
     if @search.save
+      
       redirect_to results_display_path, :notice => "Your Search has been Saved"
+      
     else
+      
       render "search_page"
+      
     end
   end 
   #***********************************************
